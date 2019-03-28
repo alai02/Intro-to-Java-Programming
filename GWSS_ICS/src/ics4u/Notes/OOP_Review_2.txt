@@ -1,0 +1,49 @@
+Question 1
+ What is the effect of giving a class member private access?
+Response: When a member of a class is declared private it can be used in only one place in a program.
+Correct answer: When a member of a class is declared private it can be used only in methods that are members of that class.
+Question 2
+ Methods of a class that are used by "outsiders" to access private (and other) data of the class are called...
+Response: Private methods.
+Correct answer: Access methods.
+Question 3
+ The set identifier returns the current value of a property and the get identifier sets a new value of a property.
+Response: False
+Correct answer: False
+Question 4
+ When a property or method is declared as public it becomes accessible only to the elements of the same class.
+Response: False
+Correct answer: False
+Question 5
+ Any private properties of the class that need to be accessed outside of the class can be made available through the use of getters and setters.
+Response: False
+Correct answer: True
+Question 6
+What term is used for hiding the details of an object from the other parts of a program?
+Response: Encapsulation.
+Correct answer: Encapsulation.
+
+Question 7
+Here is the general syntax for method definition:
+accessModifier returnType methodName( parameterList ) {
+  Java statements
+  return returnValue;
+}
+What is true for the accessModifier?
+Response: The access modifier must agree with the type of the return value.
+Correct answer: It can be omitted, but if not omitted there are several choices, including private and public.
+Question 8
+ The class and constructor declarations must also be declared as private so that your project can create an instance of the class.
+Response: True
+Correct answer: False
+Question 9
+ Class properties and methods are declared as public so that code outside the classes can see the properties and methods inside the class.
+Response: True
+Correct answer: True
+Question 10
+ Encapsulation allows you to hide class properties and methods from other parts of your project but still allows you to manipulate them in a controlled manner.
+Response: True
+Correct answer: True
+
+
+

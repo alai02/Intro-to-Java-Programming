@@ -1,0 +1,97 @@
+Graphical User Interface – A Guide to Programming in Java Ch 11
+Intro
+GUI are programs written with a visual interface using components such as frames, panels, labels, buttons, combo boxes, and text field
+Event Driven Application: clicked actions done on the GUI will create an event
+Event Handler: is a method run when the event is done 
+Swing Package (javax.swing.*)
+Swing package holds the APIs used for creating GUIs
+Frame: is a window with a border, title, and buttons for minimizing, maximizing and closing the frame.
+It is a top level container for the GUI, which holds and displays the components in a content frame
+JFrame in the javax.swing.package package
+setDefaultLookAndFeelDecorated(boolean): decorates the window with buttons
+setDefaultCloseOperation(class_constant): tells the frame what to do when the user hits the close button, usually JFrame.EXIT_ON_CLOSE
+getContentPane(): returns the pane object
+setContentPane(JPanel object): connect a panel to the frame
+Pack(): sizes the frames so all components are at or above their preferred sizes
+setVisible(boolean): displays the frame when true
+Panel: a frame uses a pane to hold GUI components. JPanel is one way of adding or removing components
+Add(Component GUIcomponent): adds a the component onto the pane, which also returns the index of the component in the pane
+Remove(int index): removes the component at index value
+Label: class for creating labels that can display text values
+JLabel(string): constructor
+JLabel(string, align_constant): creates JLabel objet with text and aligment LEADING or TRAILING aligning left or right respectively
+setText(String): change the text of the label
+Swing applications run it’s own thread dispatched in the main() method
+Thread: a process that runs sequentially from start to finish.
+GUIs should be invoked from an event-dispatching thread to ensure that each event-handler finishes executing before the next one executes.
+Buttons: a clickable element which executes a task
+JButton(String): creates a button with string as name provided
+setActionCommand(String cmd): sets the name of the action performed when the button is clicked to cmd
+getActionCommand(): returns name of action that has been performed by the button
+addActionListener(object): adds object that listens for the user to click this component
+Handling Events
+Listener: is an object that listens for action events
+Listeners require the java.awt.event.* import
+When an action occurs, it executes the event handler named actionPerformed()
+actionPerformed(ActionEvent event): has an ActionEvent parameter passed by the GUI when an event occurs
+Action command: a string describing an event
+Using this for the listener object will refer to the GUI’s object itself
+To implement the ActionListener, we add implements ActionListener to the class declaration and then defining actionPerformed() method.
+A constructor for the class will define and construct the buttons
+A listener ActionPerformed method is created to handle the button actions
+The actionPerformed will look for the event using the event.getActionCommand(); method
+Controlling Layout
+Layout: refers to the arrangement of components in the GUI
+Borders: are invisible, spaces that can be used to add padding around a component to give it distance from other components
+Layout managers: determines the order of components on a content pane
+FlowLayout: places them one next to another in a row, when a row gets too long, a new row is started (default)
+BoxLayout: places components one after another in a column
+GridLayout: places components into a grid of rows and columns
+GridLayout(number of rows, number of columns, pixels between columns, pixels between rows)
+GridLayout requires the java.awt.* statement
+Alignment: refers to the placement of a component within a layout
+setLayout(): used to specify a layout for the contentPane. BoxLayouts objects require arguments for arrangements. Vertical line layouts use PAGE_AXIS
+setBorder(): specifies borders for the pane. BorderFactory object can specify different kinds of borders. createEmptyBorder() used for empty borders
+setAlignment(): specifies the vertical alignment of the elements 
+Getting Input from user
+Text Fields: allow users to enter information and then be prompted to submit the data
+JTextField(int col): constructor for a text field
+JTextField(String, int col): creates a text field with a default text in the field
+getText(): returns the string containing in the text in JTextField
+addActionListener(object): adds an object that listens for the user to press the enter key
+All data retrieved from the text field are Strings, you need to convert them to double or integer if you need it
+java.lang.Double
+parseDouble(String): returns double value of String
+toString(double num): returns string representation of num
+java.lang.Integer
+parseInteger(String text): returns int value of the string
+toString(int num): returns string representation of num 
+Combo Boxes
+Combo boxes offer users to select from a limited set of choices
+JComboBox
+JComboBox(Object[] items): constructor for combo box with an array of choices
+setSelectedItem(int index): makes the item at index the selected item
+getSelectedItem(): returns the String corresponding to the selected item
+setEditable(boolean): allows text to be typed in the combo box
+addActionListener(Object): adds object that listens for user to select an item from the component’s list
+To handle events, you must have an event object casted to a JComboBox and then getSource(). Then you must retrieve the string in the combo box selected
+JComboBox comboBox = (JComboBox)event.getSource();
+String itemName = (String)comboBox.getSelectedItem();
+These 2 lines are implemented in the actionPerformed method 
+Colours
+Color class is located in the java.awt.* package that allows you to change the colours of GUI elements
+setBackground(Color.constant): sets the background color of a component to constant from the Color class
+setForeground(Color.constant): sets the foreground color 
+Images
+Images can be added onto a JLabel or JButton element in the form of GIF or JPG
+JLabel(ImageIcon pic): creates JLabel object with that picture
+setIcon(ImageIcon pic): sets the JLabel with that picture
+Similar for buttons, JButtons have JButton(String str, ImageIcon pic) to have picture and text
+
+
+Using Nested Classes to Handle Events
+Sometimes with many buttons, you might need multiple buttons to handle all the events
+In such circumstances, a class can be created inside a class to handle those events
+When declaring the class inside, be sure to implement ActionListener as well as refer to that class when you are making buttons/event GUI elements
+ 
+

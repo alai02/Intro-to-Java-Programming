@@ -1,0 +1,194 @@
+Sequential Programming
+In sequential programming, lines of code are written and executed one after the other ( “First do this, then do this, then do this, etc...” ). The disadvantage to this method is that you sometimes have to repeat the same code over and over again.
+Early computer programs were exclusively sequential. Instructions were written on punch cards that were physically loaded into the computer. A computer program was made up of a stack of these cards and the computer would run the program by executing the instructions on each card, in sequence
+In fact, every program is at least partially sequential in that the compiler executes lines of code one at time.
+An advantage of sequential programming is that it is easy to follow the flow of the program; you only have to read down the page.
+The disadvantage is that your program is one long list of instructions. This can make it difficult to search for a specific statement. The program may also include repetition of statements that are inefficient.
+Procedural Programming
+In procedural programming, lines of code are grouped together into a bundle called a procedure (in Java we call them methods) to perform a certain task. When you want to perform that task, you simply direct the program to run the code in the method (we call this ‘calling' the method).
+The strength of writing code like this is that it is much more efficient. You don't have to write the same code over and over again. You write it once in a method and then just call the method when you need it. Procedural programming also allows you write neater code that is easier to read and apply.
+Object-Oriented Programming
+With Object-Oriented Programming (OOP), you create separate files called classes that define not only the data type of a data structure but also the types of operations (methods) that can be applied to the data structure.
+The idea behind OOP is that all these classes can interact together to create a working program. In procedural programming, the basic building block is the function, but in OOP, the building block is the class (data and function). Your program creates an object from one of the classes.
+Custom classes can be written from scratch to produce specialized types of content such as a car in a racing program. Java also provides pre-made classes (native classes) that are used to manipulate basic types of information, such as numbers and text.
+Modularity
+The design of the Dog.java class definition file and client program DogTester.java provides a good illustration of modularity. You can make changes to the class definition file without having to change the client program. For example, suppose you wanted to add a characteristic such as age to your Dog class. Having the class definition in a separate file means that you could revise the class file, change its functionality, and still be able to use it in the client DogTester program without having to make changes to DogTester.java
+Classes
+Classes are collections of related functions and variables gathered together to achieve one or more specific goal. In classes the functions are called methods and the variables are called properties.
+
+Classes are the main building blocks of object-oriented programming. You have already been working with them in Java when you used some of the Math class methods, String class methods and properties, and the Array class methods and properties. These are predefined classes that are part of Java. It is also possible to create your own custom classes for a specific programming need.
+Objects
+Classes are used as templates for objects we can create in our programs. An object is a collection of properties and methods. Objects in Java are typically modelled after real-world objects. An example of this is a program that uses a Dog object. In the real world, you might ask questions about a specific dog: What colour is it? How big is it? What breed is it? Is it doing anything like running, barking, or eating?
+Whichever image you have in your head is not that of a real dog. It is actually an abstract representation of a dog. Just as the imaginary dog in your mind takes shape from the characteristics and behaviours that you identify, the class must also give shape to a potential object through characteristics and behaviours that are identified.
+The following is an example of a Dog class, which is used to create two Dog objects. Remember that the Dog class is a template which is used to create the actual Dog objects (instances). This program will focus on four characteristics of a dog: name, breed, aggression and hunger. It will also have three methods: a friendly bark, angry bark and a printing method, which will allow us to display easily all of the features of this dog. If you wanted to add to this program, you could incorporate other properties of a dog such as age, gender or height. You could also include other methods such as eat, sleep, move, and so on.
+Activity: Questions
+Explain the benefits of object-oriented programming.
+Discuss the difference between a class and an object.
+Discuss the difference between properties and methods of a class.
+What is code reuse (or reusability)?
+Answers:
+Code is no longer in one big file and is therefore easier to read and modify due to less repetition of code. The classes are separate files that can be worked on by different people at the same time. Classes can interact together to create a working program. Classes are also generally reusable which means that the more you program, the more classes you have to work with. When you start a new project you are never starting from scratch because you have a library of classes upon which to draw.
+A class is a definition of a type, while an object is an instance of a class. In other words, the instance is the actual object that can be manipulated. The difference between classes and objects is critical. You cannot pet the class (the concept dog) but you can pet the object (the instance) of a dog.
+A class defines a blueprint for a type of object. The characteristics and behaviours that belong to a class are jointly referred to as members of that class. The characteristics (in the dog example, the name, age, breed, and colour) are called properties of the class and are represented as variables; the behaviours (barking, eating, and running) are called methods of the class and are represented as functions.
+You can extend a class to create a subclass. Writing subclasses lets you reuse code. Instead of recreating all the code common to both classes, you can simply extend an existing class. When you extend a class, the subclass inherits all the properties and methods of the original class. The subclass usually defines additional methods and properties or overrides methods or properties defined in the superclass.
+Advantages to OOP
+The objects are separate files that can be worked on by different people at the same time.
+Objects are reusable and easy to share.
+You can make use of an object without needing to understand the code inside it (like a button).
+If an object is not working, you can remove or replace it and your main program will remain functional.
+Objects
+To understand the concept of objects, it often helps to think of a real-world object such as a dog.
+
+A dog could be said to have properties such as name, colour, breed, and age and also behaviours such as barking, eating, and running.
+
+OOP objects also have properties and behaviours. Using object-oriented techniques, you can model a real-world object.
+Instances
+Continuing with the real-world analogy of a dog, consider that there are dogs with different names, colours, breeds, and ages and with different ways of eating and behaving. However, regardless of their individual differences, all dogs are members of a general type or class—the class of dogs.
+
+A class is a definition of a type, while an object is an instance of a class. In other words, the instance is the actual object that can be manipulated. The difference between classes and objects is critical. You cannot pet the class (the concept dog) but you can pet the object (the instance) of a dog.
+
+The act of creating an object is called instantiation. Programmers talk about instantiating an object. This means that they create an object of a given type as defined by the class definition.
+
+In OOP, a class defines a blueprint for a type of object. The characteristics and behaviours that belong to a class are jointly referred to as members of that class. The characteristics (in the dog example, the name, age, breed, and colour) are called properties of the class and are represented as variables; the behaviours (barking, eating, and running) are called methods of the class, and these are represented as functions.
+Constructors
+The constructor of a class is automatically executed when an object is instantiated. Once an object is instantiated, the method members of the class can be called in any order. Unexpected results may occur if an accessor method is called before a member variable has been set to a valid value. To prevent this, variables should be initialized in the constructor.
+The constructor of a class does not have a return type and always has the same name as the class. When a constructor contains parameters, they are separated by commas. Constructors can be overloaded to provide more options for instantiating an object.
+What is a constructor?
+A constructor is a special method that is used to construct, create, or instantiate objects that are based on the class definition
+What part do methods play in a class definition?
+Besides being used for constructors, methods are also used to access variable values, set variable values, and control behaviour or interaction (i.e. execute code based on defined parameters)What is an object as it is defined in OOP?
+OOP defines an object as a container of code that combines data (stored in variables) and behaviour (defined in methods).
+An object in Java is defined inside a class, which can be thought of as the blueprint for the object that is to be created.
+The blueprint for the superhero object
+public class SuperHero {
+	- some variables for characteristics
+	- constructor methods
+
+	- access methods to read and set variable values
+	- behavioural methods to describe how the object will interact
+	......
+}
+Terms
+accessor method (getter)
+A method of a class that is used to determine the value of a variable member. Accessor methods have access level public.
+modifier method (setter)
+A method of a class that is used to change the value of a variable member. Modifier methods have access level public.
+class
+A data type that defines variables for the state of an object and methods for an object’s behaviour.
+constructor
+The part of a class that is used to initialize the variable members of a class.
+class decleration
+The first line of a class, which contains the access level, the keywordclass, and the class name.
+class method
+A method of a class that can be called from the class itself. It cannot change the state of an object. Class methods include the keyword static.
+class variable
+A variable of a class that exists as one copy that all instances of a class refer to. Class variables include the keyword static.
+instance
+An object of a class.
+instance method
+A method of a class that changes the state of a class. It must be called from an instance of the class.
+instance variable
+A variable of a class that is copied for each instance of the class.
+object
+An instance of a class. An object stores data and can perform act ions and provide communication.
+member
+A variable or method of a class.
+state
+The data an object stores.
+Introduction
+Client Code refers to an application that uses one or more classes. The client can access the methods of the class, but cannot directly access the data defined in the class. This reinforces that the state of an object can only be changed through its behaviour.
+Creating a Client
+You test a class file by creating a short program called a client program (or sometimes called a driver) that will instantiate or create objects from your class file. This is a pretty simple process.  A sample client program that can be used to test your Pacman class is shown below:
+Pacman pacman = new Pacman( MALE, 10, 10 );
+Pacman msPacman = new Pacman( );
+pacman.moveRight();
+msPacman.moveDown();
+Notice the use of the keyword new in the line:
+Pacman pacman = new Pacman( MALE, 10, 10 );
+The Java keyword 'new' is used to instantiate or create the new object. In plain English, this line can be translated to:
+declare a Pacman data type;
+identify it as pacman;
+make pacman represent a new Pacman object;
+create this Pacman object with the parameters as shown;
+these parameters will assign the sex of the Pacman (Male), to the x-location (10), and y-location (10).  These properties are outlined in the constructor that is defined in the Pacman class.
+How does the program know which class constructor to use? Basically the parameters determine this. If 3 parameters are used, the first constructor is called. If only 2 parameters are used, then the second one is called. If the parameters used don't match either of the constructors, then you would get an error. You can, of course, add additional constructors to your class file.
+Modularity
+The modularity of OOP makes programming more efficient and less error-prone.
+The design of the Pacman.java class definition file and the client program PacmanClient.java file provides a good illustration of modularity. You can make changes to the class definition file without having to change the client.
+
+For example, suppose that you wanted to add a characteristic like colour to your Pacman class. Having the class definition in a separate file means that you could revise the class file, change its functionality, and still be able to use it in the client PacmanClient program without having to make changes to PacmanClient.java.
+Q & A
+How many constructors can a class definition file contain?
+A class definition file can have any number of constructors. It must, of course, have at least one. The number of constructors is determined by the type of functionality that the programmer would like to build in to the class file. Having multiple constructors allows for more flexibility in the way that objects can be created.
+Java determines which constructor to call based on the number and the type of parameters that are being passed.
+Once a class file has been created, you can test it by compiling and executing the file. True or false? Explain.
+A class definition file does not have a main method. Therefore, it is not executable. The only way to test the class file is to create a 'driver' or 'client' program that makes use of the class file.
+What is the function of the keyword 'new'?
+
+
+The keyword 'new' is used to instantiate or create a new object based on a class definition. This object is also called an 'instance' of the class that it is created from.
+What is the advantage of modularity in programming?
+Modularity involves writing code in modules that are as independent as possible from each other. There are many advantages to writing code in modules:
+functions can be more easily identified;
+the innner workings of functions can be modified without necessarily affecting the workings of other functions;
+code errors can be more easily identified;
+class files can be kept separate from client files;
+class files can be modified without having to re-write the client files.
+Encapsulation
+In the previous activities, all of the class properties and methods that were declared in the Pacman class were public. They are declared public so that code outside the classes can see the properties and methods inside the classes. This can be dangerous because other aspects of the application can unintentionally or intentionally change the property values or execute methods.
+
+The way to avoid this problem is through encapsulation. Encapsulation allows you to hide class properties and methods from other parts of your project but still allows you to manipulate them in a controlled manner. The properties and methods must be declared as private instead of public in order to hide them. When a property or method is declared as private, it becomes accessible only to the elements of the same class.
+
+The class and constructor declarations must remain public so that your project can create an instance of the class.
+Terms
+public
+Fields, methods and constructors declared public (least restrictive) within a public class are visible to any class in the Java program, whether these classes are in the same package or in another package.
+protected
+The protected fields or methods cannot be used for classes and Interfaces. It also cannot be used for fields and methods within an interface. Fields, methods and constructors declared protected in a superclass can be accessed only by subclasses in other packages. Classes in the same package can also access protected fields, methods and constructors as well, even if they are not a subclass of the protected member’s class.
+private
+The private (most restrictive) fields or methods cannot be used for classes and Interfaces. It also cannot be used for fields and methods within an interface. Fields, methods or constructors declared private are strictly controlled, which means they cannot be accesses by anywhere outside the enclosing class. A standard design strategy is to make all fields private and provide public getter methods for them.
+default
+Java provides a default specifier which is used when no access modifier is present. Any class, field, method or constructor that has no declared access modifier is accessible only by classes in the same package. The default modifier is not used for fields and methods within an interface.
+Error Types
+The types of errors found in programs can usually be classified into syntax errors, logic errors and run-time errors. As a programmer, you are responsible for writing error (bug) free code that can handle all possible situations including errors in user input.
+Syntax Errors
+If you misspell a keyword, forget some punctuation such as a ; or a ", or forget to close off a pair of curly braces, you will get a syntax error when you try to compile your program. Since the compiler can't understand the syntax (structure or the form) of the language used, it will be unable to properly translate your code.
+Netbeans reports syntax errors and usually highlights the line where the error occurred. A brief description of the error is also given in the status bar at the side of the editor.
+Logic Errors
+Unlike syntax errors, logic errors are harder to find. When you have a logic error your program will compile and run but it will do the wrong thing. For example:
+if (age < 18) {
+    System.out.println( "You can vote");
+}
+
+
+In this example, the syntax of the statement is correct so the program will run, but it will give the wrong results. Logic errors are usually found in if's and loops where you make a logical choice. Incorrect formulas in a calculation could also be considered logic errors.
+Run Time Errors
+As the name suggests, run time errors occur when your program is running. Sometimes run time errors are totally the programmer's fault such as indexing an array outside of its bounds or a null pointer access (trying to access an object that hasn't been created). In other cases run time errors may be caused by invalid user input. For example, the user may enter a value that causes a division by zero in a calculation or the user enters "12a" when you asked for an integer value. In both cases the programmer is responsible for fixing or catching these errors.
+Even though you may feel that user input errors are not the programmer’s responsibility, good programmers will anticipate and deal with these potential problems in their code. For example, if the user’s input could cause a division by zero error in a calculation, you should check for this before the calculation and then deal with the situation appropriately.
+The Java language reports runtime errors by throwing an object called an Exception.
+System Testing
+The consequences of improper testing depend on what the system is supposed to do but obviously there can be serious implications for an organization if the testing is not done properly.  Perhaps it is not too severe if a stock check system for a small shop fails; the users can always resort to counting items by hand.  However an air traffic control system presents the other end of the spectrum: failure is not an option!
+Systems usually go through several stages of developmental testing. In some development methods users test the software at different stages of its development - a group of programmers may examine an early version to see how it performs (alpha testing). Beta testing is used when the product is nearly ready for release and the developers believe that there are few or no errors. The software is released to users outside the company who can try it out in a range of different environments. Credible companies always let the users know that the product is at the beta stage and may not perform perfectly.
+There are formal methods of testing which attempt to 'prove' that software actually works using theoretical or mathematical techniques. Any software above the very simplest programs you will have produced in the first month of your course is too complex to be 'exhaustively' tested (see below).
+The process of testing a program involves both functional testing and testing with different types of input data.
+Functional Testing
+Functional testing involves describing systematically what is supposed to happen when buttons are pressed on an event driven interface or menu choices are selected.  If an AddRecordchoice is made, does the program go the subprogram dealing with adding records?  Another way of verifying an algorithm will actually work is to trace (or 'dry run' or 'desk check') it.
+Test Data
+Test data is frequently categorised in the following ways. Suppose that there is a simple program that accepts a person's percentage in an exam and gives an output that they have passed if the percentage is greater than or equal to fifty or otherwise prints a 'fail' message. We can test that input with:
+Normal Data
+Normal Data such as 23 or 56 will check to see if the pass and fail messages are properly delivered. Data at the Limits should also be checked, for example 0, 49, 50,100 are all examples of normal data at the limits as defined by our problem description.
+Extreme Data
+Extreme Data will be outside the normal limits, -1, 104, 122 are examples. The user may not type in such data because they're dumb, it's easy to hit a key accidentally or twice by mistake.
+Abnormal Data
+Abnormal Data will be the type of input data we really didn't except (in this case it could be data that looks like a string and not an integer). A user may enter 'three', which seems unlikely, but they could also hit the spacebar by mistake and enter '3 5', for example.
+Implementing New Systems
+When a new system is introduced it will often mean changes in the way things are done. The existing staff will need adequate training to use the new system. This creates a difficulty for the company since these people still need to carry out their regular duties. The method of changeover to the new system has an impact on opportunities for training.
+Parallel Running
+Parallel running involves running the old and new systems together. This way it is possible to confirm that both systems produce the same results and, should the new system develop any faults, no data or 'up-time' is lost. It also provides an opportunity for users to be trained on the new system and any mistakes they make are not too critical as the old system is still running. On the other hand, there could be twice as much work for the operators to do!
+Phased Introduction
+With phased introduction, parts of the system can be implemented at different times. After each part is tested and confirmed to work, the next part is introduced. This means that training period is extended and also the new system will be introduced over a longer period of time. A similar approach at, for example, a bank would be to introduce a 'pilot system' at one branch to see if there are any problems before introducing it across the entire organisation.
+Phased implementation and parallel running are difficult when the new system is a complete replacement for the old one, and there is little overlap between the two.
+Direct Changeover
+In this case a direct changeover or 'big bang' may be made. In this case the users need to be trained completely to use the new system before the changeover takes place. Clearly there are risks associated with this type of changeover if the new system does not work correctly.
+
+

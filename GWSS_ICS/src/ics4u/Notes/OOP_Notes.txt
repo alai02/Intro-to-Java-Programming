@@ -1,0 +1,506 @@
+Introduction
+An abstract class models an abstract concept.  For example, a musical instrument is an abstract concept.  An instrument is something that can be played, but there is no such thing an “instrument” instrument. There are however, flutes, piccolos, drums, and cymbals.
+Abstract Classes
+Abstract classes cannot be instantiated because they should not represent objects. They instead describe the more general details and actions of a type of object.  For example, theInstrument class describes the very basics of an instrument — it can make a sound.  The Woodwind class is also an abtract class because it describes a group of instruments.  It includes a general sound that woodwind instruments make.
+Abstract classes are declared with the keyword abstract in the class declaraction.  They are intended to be inherited.  The public members of the abstract class are visible to derived objects.  However, an abstract class can also contain an abstract method.  An abstract method is declared with the keyword abstract and contains a method declaration, but no body.  The abstract class must be implemented in its subclass.
+/**
+ * Instrument class.
+ */
+abstract class Instrument {
+
+    String musician;
+
+    /**
+     * constructor pre: none post: A musician has been assigned to the
+     * instrument.
+     */
+    public Instrument( String name ) {
+        musician = name;
+    }
+
+    /**
+     * Returns the name of the musician pre: none post: The name of the musician
+     * playing the instrument has been returned.
+     */
+    public String getMusician() {
+        return ( musician );
+    }
+
+    /**
+     * Should return the sound of the instrument. pre: none post: The sound made
+     * by the instrument is returned.
+     */
+    abstract String makeSound();
+}
+
+
+The Vocal class is a subclass of Instrument. It provides the body for the makeSound() method:
+/**
+ * Vocal class.
+ */
+public class Vocal extends Instrument {
+
+    /**
+     * constructor pre: none post: A singer has been created.
+     */
+    public Vocal( String singerName ) {
+        super( singerName );
+    }
+
+    /**
+     * Returns the sound of the instrument. pre: none post: The sound made by
+     * the singer.
+     */
+    public String makeSound() {
+        return ( "LaLaLa" );
+    }
+
+    /**
+     * Returns a String that represents the instrument. pre: none post: A string
+     * representing the singer.
+     */
+    public String toString() {
+        return ( super.getMusician() + " sings " + makeSound() + "." );
+    }
+}
+
+
+Interfaces
+An interface is a class with method declarations that have no implementations. Although an interface may seem similar to an abstract class, it is very different. An interface cannot be inherited. It may only be implemented in a class. An interface can add behavior to a class, but it does not provide a hierarchy for the class.
+An interface takes the form:
+<access _ level> interface <name> {
+   <return _ type> <method _ name> (<method _ param>);
+   ...additional methods
+The methods defined in an interface are by default public and abstract. Therefore, the methods in an interface are only declarations followed by a semicolon.
+The Comparable interface is part of the java.lang package. It contains one method:
+Interface Comparable (java.lang.Comparable)
+Method compareTo(Object obj)
+returns 0 when obj is the same as the object, a negative integer is returned when obj is less than the object, and a positive integer is returned when obj is greater than the object.
+When an interface is implemented in a class, the class must implement each method defined in the interface. In this case, the Comparable interface contains just one method.
+
+
+Introduction
+Polymorphism refers to the capability of objects to react differently to the same method. Polymorphism can be implemented in the Java language in the form of multiple methods having the same name but with the ability to override each other.
+
+Polymorphism
+The word ‘poly' means many and the word ‘morph' means form. The idea behind polymorphism is that an object can take many forms. Using polymorphism, classes can override methods of their superclasses and define specialized implementations of those methods.
+Mammal Class
+For example, in the Mammal class, you could include a method to allow the Mammal to speak. Since we do not know exactly what kind of mammal we will be representing, the Mammal class speak method should be generic. The idea behind polymorphism is that we will create speak methods for the sub classes of Mammal unique to each class. When a dog speaks, it will bark. When a cat speaks, it will meow. These two objects are both considered mammals, but their speak method is different.
+Type the following code. Notice that the Mammal speak method is overwritten in each of the sub classes (Dog, Cat, Horse and Pig). The program creates an array of Mammals; the user decides which type of Mammal to create. Based on their choices, each Mammal will speak.
+public class Mammal {
+  private int age;
+
+  public Mammal() {
+    age = 1;
+  }
+
+  public void move() {
+    System.out.println("Mammal move one step");
+  }
+
+  public void speak(){
+    System.out.println("Mammal speak! ");
+  }
+}
+
+
+public class Dog extends Mammal {
+  public Dog() {
+    //call Mammal constructor
+    super();
+  }
+
+  //override the Mammal speak method
+  public void speak() {
+    System.out.println("Woof!!");
+  }
+}
+
+
+public class Cat extends Mammal {
+  public Cat() {
+    //Call the mammal constructor
+    super();
+  }
+
+  //override the Mammal speak method
+  public void speak() {
+    System.out.println("Meow!");
+  }
+}
+
+
+public class Horse extends Mammal {
+  public Horse() {
+    //Call Mammal constructor
+    super();
+  }
+
+  //override the Mammal speak method
+  public void speak() {
+    System.out.println("Winnie!");
+  }
+}
+
+
+public class Pig extends Mammal {
+  public Pig() {
+    //Call Mammal constructor
+    super();
+  }
+
+  //override the Mammal speak method
+  public void speak() {
+    System.out.println("Oink!");
+  }
+}
+
+
+import javax.swing.*;
+
+public class AnimalHouse {
+  public static void main(String[] args) {
+    //Create an array of mammals
+    Mammal theArray[] = new Mammal[5];
+
+    String choice;
+
+    //Fill the array
+    for (int i = 0; i < 5; i++) {
+      choice = JOptionPane.showInputDialog(
+        "Mammal #" + (i + 1) + "\n"
+        + "1 - Dog\n"
+        + "2 - Cat\n"
+        + "3 - Horse\n"
+        + "4 - Pig");
+      if (choice.equals("1")) {
+        theArray[i] = new Dog();
+      }
+      if (choice.equals("2")) {
+        theArray[i] = new Cat();
+      }
+      if (choice.equals("3")) {
+        theArray[i] = new Horse();
+      }
+      if (choice.equals("4")) {
+        theArray[i] = new Pig();
+      }
+    }
+
+    //Get all 5 mammals to speak
+    for (int i = 0; i < 5; i++) {
+      theArray[i].speak();
+    }
+  }
+}
+
+
+
+Advantages of Polymorphism
+When the last for loop is executed in AnimalHouse.java, the .speak() method is executed for each Mammal in the array. As far as the compiler knows, all of these objects are Mammals. Why doesn't the program simply print Mammal speak? Each Mammal has its own speak method; the generic speak() method in Mammal is overwritten in each of the sub classes. The structure of the method (method name, input variables, return variables) must be exactly the same in the sub class as in the super class for this to work.
+The advantage of doing this is that you can create programs that will behave more like real world objects. Because of this ability, your programs will make more sense. It can also shorten the amount of code you need to write.
+Another advantage is that you can actually create methods that MUST be overwritten. This ensures consistency when working as a programming team. To force polymorphism, add the keyword abstract in front of the method you want overwritten and the class name. The method should be blank; just put in a semi-colon. Below is the modified version of Mammal.java:
+public abstract class Mammal {
+  private int age;
+
+  public Mammal() {
+    age = 1;
+  }
+
+  public void move() {
+    System.out.println("Mammal move one step");
+  }
+  //speak MUST be overwritten
+  public abstract void speak();
+}
+
+
+The abstract keyword is very useful when working in groups on a program. It will ensure that every sub class overrides the necessary methods. If you were to assign the task of designing a new type of mammal sub class such as a Donkey to another programmer, you would know that the speak method would be have to be overwritten. The program would not compile without it.
+Forcing the programmer to override methods helps to prevent errors. It would not be needed for a simple program such as the AnimalHouse.java, but on complicated programs where there are sub classes of sub classes, it would be very important.
+
+Overview
+When looking closely at members of the same family you often hear people say "He looks just like his father..." or "You have your mother's eyes..." or "You got your singing voice from your great grandmother who..." Members of the same family quite often share traits and/or characteristics. In a biological sense the trait is often described as being inherited. Object-Oriented Programming uses the concept of inheritance to extend the functionality a classes and objects through the creation of sub-classes. These sub-classes of objects also inherit traits and behaviours from the parent or super-class.
+What is Inheritance?
+Inheritance is one of OOP's greatest sources of power. Inheritance is the ability to extend an existing class to create a subclass instead of creating an entirely new class. This can save a significant amount of time and labour during programming design.
+
+With inheritance, you can create a new class called a subclass that inherits attributes (properties and methods) from the original class called the parent or super class. Through inheritance, a subclass can acquire from its parent class useful methods and properties, as well as add entirely new methods and properties.
+When you extend a class, the subclass inherits all the properties and methods of the original class. The subclass usually defines additional methods and properties or overrides methods or properties defined in the superclass.
+Extending a Class
+Often times there is an existing class that provides a basis for an object that models a specification. However, the existing class may need additional methods or different implementations of existing methods to more closely represent the object for the model. For example, consider a disk, which has circular shape. It is similar to a circle. However, a disk is three dimensional and also has a thickness. Rather than create a whole new class to represent a disk, a class named Disk could extend the Circle class.
+Making one class an extension of another involves inheritance. Inheritance allows a class to define a specialized type of an already existing class. In this case, a disk is a solid circle with a thickness. Classes that are derived from existing classes demonstrate an is-a relationship. A class “is a” type of another class. In this case, a disk is a circle with a thickness.
+A class can have many levels of inheritance. For example, consider the following class hierarchy:
+
+The Puck class inherits the Disk class, which inherits the Circle class. The Circle class is the superclass of Disk. Disk is the subclass of Circle and the superclass of Puck. Puck is the subclass of Disk.
+Implementing a Subclass
+A class that inherits another class includes the keyword extends in the class declaration and takes the form:
+public class <name> extends <class _ name> {
+	<class definition>
+}
+Designing a subclass requires selecting the superclass, or base class, and then defining any additional variable and method members for the subclass. In many cases, existing methods in the base class will also be overridden by new definitions in the subclass, also called the derived class.
+Super
+In a subclass, the keyword super is used to access methods of the base class. For example, the statement super(r) calls the constructor of the superclass, Circle, and passes an argument for setting the radius value. Members that are declared private are not accessible to derived classes. Therefore, accessor methods are used to get inherited member variable values.
+Inherited methods are called directly from an object, just as any method of the class is called. Whether a method is original to the Disk class or inherited from the Circle class is transparent to client code.
+Terms
+Base Class
+A superclass.
+Derived Class
+A subclass.
+Inheritance
+The OOP property in which a class can define a specialized type of an already existing class.
+Is-a relationship
+The relationship demonstrated by a class derived from an existing class.
+extends
+The keyword used in a class decleration to inherit another class.
+super
+The keyword used to call a superclass constructor or method.
+
+Example: Mammal Class
+In previous activities, you were introduced to the Dog class. The Dog class is great if you wish to deal only with dogs. Imagine, though, that you are creating a program to catalogue pets in a pet store. You might have dogs, cats, lizards, birds, and various other creatures. The ideal situation would be to create a cat class, lizard class, bird class, etc., but there would be some redundancy when creating a class for each type of animal. For example, each pet would have an age, weight, and breed, so the code to handle these variables would be the same in each class. Instead of typing up the same code three times, there is a much simpler and effective way of doing this. This method is called inheritance.
+You could also create what is known as a super class or parent class. This class shares properties and methods with other classes (often called sub classes, child classes or descendentclasses).
+In our pet store example, we could create a Mammal class which contains the age, weight and breed variables. It would also contain the accessor methods for each. The dog and cat class would extend the Mammal class (they will inherit all the methods that the mammal class has). We could then customize each individual class.
+Since you have inherited the age, breed and weight properties as well as the accessor methods from the mammal class, you do not need to include them in the sub classes. However, we can add unique methods or properties to each class.
+The following two classes, Dog and Cat, both extend the Mammal class, so they inherit the properties and methods of Mammal. The speak method for each class is unique. A separate file,AnimalsTester, is used to test out the classes.
+public class AnimalsTester {
+  public static void main(String[] args) {
+    Dog jackie = new Dog();
+    jackie.setAge(10);
+    jackie.setWeight(7);
+    jackie.setBreed("Poodle");
+
+    System.out.println("Dog object jackie:");
+    System.out.println("age: " + jackie.getAge());
+    System.out.println("weight: " + jackie.getWeight());
+    System.out.println("breed: " + jackie.getBreed());
+    jackie.speak();
+    jackie.wagTail();
+
+    System.out.println("-------------------------");
+
+    Cat garfield = new Cat();
+    garfield.setBreed("Siamese");
+    System.out.println("Cat object garfield:");
+    System.out.println("age: " + garfield.getAge());
+    System.out.println("weight: " + garfield.getWeight());
+    System.out.println("breed: " + garfield.getBreed());
+    garfield.speak();
+  }
+}
+
+
+public class Mammal {
+  private int itsAge;
+  private int itsWeight;
+  private String breed;
+
+  public Mammal() {
+    itsAge = 2;
+    itsWeight = 5;
+  }
+
+  public int getAge() {
+    return itsAge;
+  }
+
+  public int getWeight() {
+    return itsWeight;
+  }
+
+  public void setAge(int newAge) {
+    itsAge = newAge;
+  }
+
+  public void setWeight(int newWeight) {
+    itsWeight = newWeight;
+  }
+
+  public String getBreed() {
+    return breed;
+  }
+
+  public void setBreed(String newBreed) {
+    breed = newBreed;
+  }
+
+  public void speak() {
+    //will be overwritten by Dog class and Cat class
+  }
+}
+
+
+public class Dog extends Mammal {
+  public void speak() {
+    System.out.println("BARK!!!");
+  }
+
+  //Unique method for Dog Class
+  public void wagTail() {
+    System.out.println("Tail Wagging...");
+ }
+}
+
+
+public class Cat extends Mammal {
+  public void speak() {
+    System.out.println("Meow!!!");
+  }
+}
+
+
+
+Example: Person
+Human beings are perfect for using the inheritance model when it comes to designing classes. We have so many things in common that it makes sense to make a super class called Personwhich contains all of our characteristics which apply to everyone. In the example below, there are two types of workers needed for a business. One is a boss and the second is the hourly workers. The boss has a salary and the ability to hire/fire workers. The hourly worker is paid by the hour for a set amount of hours per week. However, these two classifications of workers also have things in common: each employee has a first and last name, an age and a gender.
+Note: A default constructor is used for the Person class. Each subclass will call the parent class's constructor by using the method super().
+public class WorkersTester {
+  public static void main(String[] args) {
+    Boss b1 = new Boss();
+    b1.setName("Steve", "Jobs");
+    b1.setAge(46);
+    b1.setSalary(1000000);
+    b1.hireWorkers(2500);
+
+    HourlyWorker n1 = new HourlyWorker();
+    n1.setName("Alice", "Smith");
+    n1.setAge(23);
+    n1.setMale(false);
+
+    HourlyWorker n2 = new HourlyWorker();
+    n2.setName("Henry", "Jones");
+    n2.setAge(51);
+
+    //Display the 3 workers manually
+    System.out.println(b1);
+    System.out.println(n1);
+    System.out.println(n2);
+
+    System.out.println("-------------------------------");
+    System.out.println("Printing out an array of 3 Person "
+      + "objects using a loop");
+
+    //HourlyWorker & Boss objects belong to the Person class
+    //They are allowed into an array of Persons
+    Person ppl[] = new Person[3];
+    ppl[0] = b1;
+    ppl[1] = n1;
+    ppl[2] = n2;
+
+    for (int i = 0; i < ppl.length; i++) {
+      System.out.println(ppl[i]);
+    }
+  }
+}
+
+
+public class Person {
+  private String fName, lName;
+  private int age;
+  private boolean male;
+
+  public Person() {
+    this.fName = "John";
+    this.lName = "Doe";
+    this.age = 21;
+    this.male = true;
+  }
+
+  public String getName() {
+    return fName + " " + lName;
+  }
+
+  public void setName(String newFName, String newLName) {
+    this.fName = newFName;
+    this.lName = newLName;
+  }
+
+  public int getAge() {
+    return this.age;
+  }
+
+  public void setAge(int newAge) {
+    this.age = newAge;
+  }
+
+  public boolean getMale() {
+    return this.male;
+  }
+
+  public void setMale(boolean isMale) {
+    this.male = isMale;
+  }
+
+  public String toString() {
+    String output = "";
+    output += "Name: " + fName + " " + lName + "\n";
+    if (male) {
+      output += "Sex: Male\n";
+    } else {
+      output += "Sex: Female\n";
+    }
+    output += "Age: " + age + "\n";
+    return output;
+  }
+}
+
+
+public class Boss extends Person {
+  private int salary;
+  private int numEmployees;
+
+  public Boss() {
+    //Call the default constructor from Person
+    super();
+    this.salary = 0;
+    this.numEmployees = 0;
+  }
+
+  public void hireWorkers(int n) {
+    this.numEmployees += n;
+  }
+
+  public void fireWorkers(int n) {
+    this.numEmployees -= n;
+  }
+
+  public void setSalary(int s) {
+    this.salary = s;
+  }
+
+  public String toString() {
+    String output = "";
+    output += super.toString();
+    output += "Salary: " + salary + "\n";
+    output += "Employees: " + numEmployees + "\n";
+    return output;
+  }
+}
+
+
+public class HourlyWorker extends Person {
+  private double wagePerHour;
+  private double hoursPerWeek;
+
+  public HourlyWorker() {
+    //Call the default constructor from Person
+    super();
+    this.wagePerHour = Math.random() * 10.0 + 15.0;
+    this.hoursPerWeek = 37.0;
+  }
+
+  public void displayCheque() {
+    System.out.println("Cheque: "+(wagePerHour*hoursPerWeek));
+  }
+
+  public String toString() {
+    String output = "";
+    output += super.toString();
+    output += "Wage: " + wagePerHour + "\n";
+    output += "Hours Per Week: " + hoursPerWeek + "\n";
+    return output;
+  }
+}
+
+
+There are a few important things to notice about this program. When creating HourlyWorker n1 for example, the default constructor for the HourlyWorker class is called. The very first thing that occurs in that constructor is the call to the parent class constructor by using the super() method. This is good practice, because any variables assigned by the parent class should normally be overwritten by the sub class. In many programming languages, the call to the super class constructor MUST be the first command in a sub class constructor.
+The second concept to take note of is the ability to store both HourlyWorker objects and Boss objects into a Person array. Since both HourlyWorkers and Bosses descend from the Person class, they are allowed to be stored into a Person array. This could be extremely useful if you had many different types of people and you wanted to display their information in an easy way.
+As you can see, when properly used, inheritance can save the programmer in both time and lines of code.
+
+

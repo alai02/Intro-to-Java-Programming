@@ -1,0 +1,162 @@
+Computer Science Exam Review 
+
+Unit 2 - Object Oriented Programming 
+
+Polymorphism and Inheritance
+
+Intro
+Inheritance extends on an existing class
+Polymorphism is something you can do to classes that are being inherited
+You might want to extend a class by adding more specific items into the object
+A car class might be extended to “BMW” class where it has BMW specific methods and variables
+Or a Circle class might be extended to “Disk” and accepts the input of height. 
+Inheritance
+Inheritance: when you extend classes from a “super class” to make it do more specific things
+“allows a class to define a specialized type of an already existing class”
+Is-a relationship: an extended class “is a” type of another class
+BMW “is a” type of a car class. Disk “is a” type of circle class. 
+Implementation:
+extends: a keyword you must use to declare a “sub class”
+this keyword will make it refer to the super class
+public class <name> extends <superclass_name> { … }
+base class: or “super class: is the class which this sub class is based on
+derived class: or “sub class” often contains overridden methods or new data from the base class
+super: is a keyword used to access methods in the base class
+Ex. super(r) from the BMW class will call the constructor of the super class (car) , and pass variable r into it.
+Members that are private cannot be accessed by derived classes
+Hence, accessor methods are used to get values (ie getWeight(), getRadius())
+Inherited Methods can be called directly.
+If M3 is the object of BMW class, and you call carStart() from client code. If BMW class doesn’t have it’s own carStart() method, but Car class does, since BMW inherited the Car class, the client code doesn’t care and still executes carStart().
+ Polymorphism
+Polymorphism: an OOP property where objects have the ability to assume different types.
+Polymorphism is based on inheritance
+Since a subclass is derived from a super class, a super class object can reference an object of the subclass 
+ie Car honda;
+BMW 320i = new BMW(<arguments>);
+honda = 320i  //honda now references 320i
+Since BMW is inherited from Car class, any object made from Car can be “morphed” into another object made by a subclass of Car, in this case, a BMW 320i object.
+Overridden methods from the super class can be called from the sub class.
+From the earlier example, the method toString() originally in Car was overridden in BMW. Even though honda was made by Car class, then later morphed into a BMW object, I can still call the toString() method overridden by BMW. 
+Abstract Classes
+Abstract Classes: are used to model abstract concepts.
+For example, a “vehicle” is an abstract object, you cannot have a “vehicle” vehicle. You can have cars, trucks, BMWs, Hondas which are in the form of vehicles.
+Abstract classes are instantiated but do not represent the objects
+They only have general details and actions of a type of object
+Example: a Vehicle abstract class may only have number of wheels, or number of seats. Later, another class, like Car, can inherit the Vehicle class and add more details like colour, make, brand, etc.
+abstract: Abstract classes are declared with abstract keyword
+All abstract classes are intended to be inherited
+Only public members of abstract classes are visible to derived objects
+abstract class <class name> { .. }
+Abstract Methods: methods declared with abstract keyword but contains no body
+They are meant to be overridden in derived classes
+abstract <return type>  <method name>(); 
+Interfaces
+Interface: a class with method declarations but no implementations
+Interfaces cannot be inherited, they must be imported
+Interfaces always has abstract methods
+You can only implement an interface class, but it is not part of thehierarchy
+<access level> interface <name> { .. methods .. }
+Comparable Interface: one example of an interface in the java.lang package
+CompareTo(Object obj) : returns 0 when obj is same as the object, a negative integer if obj is less than the object, and positive integer if obj is greater than the object.
+A class must implement each method defined in the interface
+Multiple Interfaces: A class can have multiple interfaces
+When more than 1 interface is implemented, the interface names are separated by commas in the class declaration.
+ 
+
+Unit 3 - GUIs and Event Driven Programming 
+
+Intro
+GUI are programs written with a visual interface using components such as frames, panels, labels, buttons, combo boxes, and text field
+Event Driven Application: clicked actions done on the GUI will create an event
+Event Handler: is a method run when the event is done 
+Swing Package (javax.swing.*)
+Swing package holds the APIs used for creating GUIs
+Frame: is a window with a border, title, and buttons for minimizing, maximizing and closing the frame.
+It is a top level container for the GUI, which holds and displays the components in a content frame
+JFrame in the javax.swing.package package
+setDefaultLookAndFeelDecorated(boolean): decorates the window with buttons
+setDefaultCloseOperation(class_constant): tells the frame what to do when the user hits the close button, usually JFrame.EXIT_ON_CLOSE
+getContentPane(): returns the pane object
+setContentPane(JPanel object): connect a panel to the frame
+Pack(): sizes the frames so all components are at or above their preferred sizes
+setVisible(boolean): displays the frame when true
+Panel: a frame uses a pane to hold GUI components. JPanel is one way of adding or removing components
+Add(Component GUIcomponent): adds a the component onto the pane, which also returns the index of the component in the pane
+Remove(int index): removes the component at index value
+Label: class for creating labels that can display text values
+JLabel(string): constructor
+JLabel(string, align_constant): creates JLabel objet with text and aligment LEADING or TRAILING aligning left or right respectively
+setText(String): change the text of the label
+Swing applications run it’s own thread dispatched in the main() method
+Thread: a process that runs sequentially from start to finish.
+GUIs should be invoked from an event-dispatching thread to ensure that each event-handler finishes executing before the next one executes.
+Buttons: a clickable element which executes a task
+JButton(String): creates a button with string as name provided
+setActionCommand(String cmd): sets the name of the action performed when the button is clicked to cmd
+getActionCommand(): returns name of action that has been performed by the button
+addActionListener(object): adds object that listens for the user to click this component
+Handling Events
+Listener: is an object that listens for action events
+Listeners require the java.awt.event.* import
+When an action occurs, it executes the event handler named actionPerformed()
+actionPerformed(ActionEvent event): has an ActionEvent parameter passed by the GUI when an event occurs
+Action command: a string describing an event
+Using this for the listener object will refer to the GUI’s object itself
+To implement the ActionListener, we add implements ActionListener to the class declaration and then defining actionPerformed() method.
+A constructor for the class will define and construct the buttons
+A listener ActionPerformed method is created to handle the button actions
+The actionPerformed will look for the event using the event.getActionCommand(); method 
+Controlling Layout
+Layout: refers to the arrangement of components in the GUI
+Borders: are invisible, spaces that can be used to add padding around a component to give it distance from other components
+Layout managers: determines the order of components on a content pane
+FlowLayout: places them one next to another in a row, when a row gets too long, a new row is started (default)
+BoxLayout: places components one after another in a column
+GridLayout: places components into a grid of rows and columns
+GridLayout(number of rows, number of columns, pixels between columns, pixels between rows)
+GridLayout requires the java.awt.* statement
+Alignment: refers to the placement of a component within a layout
+setLayout(): used to specify a layout for the contentPane. BoxLayouts objects require arguments for arrangements. Vertical line layouts use PAGE_AXIS
+setBorder(): specifies borders for the pane. BorderFactory object can specify different kinds of borders. createEmptyBorder() used for empty borders
+setAlignment(): specifies the vertical alignment of the elements 
+Getting Input from user
+Text Fields: allow users to enter information and then be prompted to submit the data
+JTextField(int col): constructor for a text field
+JTextField(String, int col): creates a text field with a default text in the field
+getText(): returns the string containing in the text in JTextField
+addActionListener(object): adds an object that listens for the user to press the enter key
+All data retrieved from the text field are Strings, you need to convert them to double or integer if you need it
+java.lang.Double
+parseDouble(String): returns double value of String
+toString(double num): returns string representation of num
+java.lang.Integer
+parseInteger(String text): returns int value of the string
+toString(int num): returns string representation of num 
+Combo Boxes
+Combo boxes offer users to select from a limited set of choices
+JComboBox
+JComboBox(Object[] items): constructor for combo box with an array of choices
+setSelectedItem(int index): makes the item at index the selected item
+getSelectedItem(): returns the String corresponding to the selected item
+setEditable(boolean): allows text to be typed in the combo box
+addActionListener(Object): adds object that listens for user to select an item from the component’s list
+To handle events, you must have an event object casted to a JComboBox and then getSource(). Then you must retrieve the string in the combo box selected
+JComboBox comboBox = (JComboBox)event.getSource();
+String itemName = (String)comboBox.getSelectedItem();
+These 2 lines are implemented in the actionPerformed method 
+Colours
+Color class is located in the java.awt.* package that allows you to change the colours of GUI elements
+setBackground(Color.constant): sets the background color of a component to constant from the Color class
+setForeground(Color.constant): sets the foreground color 
+Images
+Images can be added onto a JLabel or JButton element in the form of GIF or JPG
+JLabel(ImageIcon pic): creates JLabel object with that picture
+setIcon(ImageIcon pic): sets the JLabel with that picture
+Similar for buttons, JButtons have JButton(String str, ImageIcon pic) to have picture and text
+Using Nested Classes to Handle Events
+Sometimes with many buttons, you might need multiple buttons to handle all the events
+In such circumstances, a class can be created inside a class to handle those events
+When declaring the class inside, be sure to implement ActionListener as well as refer to that class when you are making buttons/event GUI elements
+
+
+

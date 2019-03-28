@@ -1,0 +1,178 @@
+Question 1        --     Constructors are used to initialize variables in a class.
+Response: True
+Correct answer: True
+Question 2
+ Constructors have the return type void.
+Response: False
+Correct answer: False
+Question 3
+ Constructors have or could have a return type.
+Response: True
+Correct answer: False
+Question 4
+ A class can contain more than one constructor.
+Response: True
+Correct answer: True
+Question 5
+ The most efficient way to reinitialize variables is to reinvoke the constructor.
+Response: False
+Correct answer: False
+Question 6
+ A class with the access level private means that it is visible to other classes and can be used to instantiate objects in those classes.
+Response: False
+Correct answer: False
+Question 7
+ Declaring a variable as private makes it visible to the class, but not to the client code.
+Response: True
+Correct answer: True
+Score: 1 out of 1 
+Question 8 --  Once an object is instantiated, method members must be called in a sequential sequence.
+Response: False
+Correct answer: False 
+Question 9
+ Encapsulation is also called information hiding.
+Response: True
+Correct answer: True
+Score: 1 out of 1 
+Question 10
+ Accessor methods (getters) can be instance methods.
+Response: False
+Correct answer: True
+Score: 0 out of 1 
+Question 11
+ A class can contain member variables that are class data types.
+Response: True
+Correct answer: True
+Score: 1 out of 1 
+Question 12
+ Which is a data type that defines variables for the state of an object and methods for an object’s behavior?
+Response: class
+Correct answer: class
+Score: 1 out of 1 
+Question 13
+ Which is included in a class declaration? 
+I.	access level	
+II.	keyword class	
+III.	class name	
+IV.	class body
+Response: I, II, and III.
+Correct answer: I, II, and III.
+Score: 1 out of 1 
+Question 14
+ Which is included in a class body? 
+I.	methods	
+II.	variables	
+III.	constructors
+Response: I and III.
+Correct answer: I, II, and III.
+
+Question 15      -     The visibility of a member variable is controlled with a(n):
+Response: access modifer.               Correct answer: access modifer
+Question 1              Which statements are true? 
+I.	Instance variables are created each time an object is declared.	
+II.	Instance methods can only be called from the class itself.	
+III.	Class methods can be called from the class itself.	
+IV.	Class variables are created each time an object is declared.
+Response: I and III only.            Correct answer: I and III only.
+Question 17      -     Which describes an application that uses components that are separately written and maintained?
+Response: modular.
+Correct answer: client code.
+Question 18  - Given the following code:
+       String s1 = new String( "ABC123" );
+        String s2 = new String( "ABC123" );
+        String s3 = new String( "789XYZ" );
+        String s4 = null;
+        
+        String[] sArray = new String[4];
+        sArray[0] = s1;
+        sArray[1] = s2;
+        sArray[2] = s3;
+        sArray[3] = s4;
+        
+        ArrayList<String> sList = new ArrayList<>();
+        sList.add( s1 );
+        sList.add( s2 );
+        sList.add( s3 );
+        sList.add( s4 );                
+
+
+Evaluate the following boolean expressions (true / false / error):
+Response: s1 == s2 => false,s2 == sArray[0] => false, s3 == sList.get( 2 ) => error:  syntax or runtime, s4 == "" => false, s4 == "" => false,sArray == sList => true, s1.equals( s2 ) => false, s2.equals( s4 ) => true, sArray[1].equals( sList.remove( 0 ) ) => error:  syntax or runtime, sArray.equals( sList ) => false, s4.equals( sArray[3] ) => 
+Correct answer: s1 == s2 => false, s2 == sArray[0] => false, s3 == sList.get( 2 ) => true, s4 == "" => false, sArray == sList => error:  syntax or runtime,s1.equals( s2 ) => true, s2.equals( s4 ) => false, sArray[1].equals( sList.remove( 0 ) ) => true, sArray.equals( sList ) => false, s4.equals( sArray[3] ) => error:  syntax or runtime
+Score: 2 out of 5 
+Question 19
+Given the following code:
+public class QuizObject {
+
+    static int x;
+      int i;
+    double d;
+    String s;
+
+    public QuizObject() {
+        x++;
+       this.s = "Quiz Object";
+    }
+
+    public QuizObject( int i ) {
+        this();
+        i++;
+    }
+    
+    public QuizObject( double d ) {
+        this();
+        this.d = d;
+    }
+    
+    public QuizObject( double d, int i ) {
+        this( i );
+        i = 2;
+    }
+    
+    public QuizObject( double d, int i, String s ) {
+        this( d, i );
+        this.d = d;
+        this.i = i;
+    }
+
+    public static int getX() {
+        return x;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public double getD() {
+        return d;
+    }
+
+    public String getS() {
+        return s;
+    }
+    
+    public static void main(String[] args) {
+
+        QuizObject qo1 = new QuizObject();
+        QuizObject qo2 = new QuizObject( 99 );
+        QuizObject qo3 = new QuizObject( 3.14 );
+        QuizObject qo4 = new QuizObject( 11.0, 22, "Object 4" );
+        QuizObject qo5 = new QuizObject( 33.0, 44, "Object 5" );
+        
+What would the following getters return:
+qo1.getI()    _____
+qo1.getS()    _____
+qo2.getI()    _____
+qo3.getD()    _____
+qo4.getI()    _____
+qo4.getD()    _____
+
+
+qo5.getI()    _____
+qo5.getD()    _____
+qo5.getS()    _____
+qo5.getX()    _____
+Response: 0, Quiz Object, 0, 3.14, 22, 11.0, 44, 33.0, Quiz Object, Quiz Object
+Correct answer: 0, Quiz Object, 0, 3.14, 22, 11.0, 44, 33.0, Quiz Object, 5
+
+
